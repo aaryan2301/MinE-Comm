@@ -12,7 +12,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/**") // Allows CORS for all your API endpoints
                 .allowedOrigins(
                     "http://localhost:5173",            // Your local React port
-                    "https://onrender.com" // Your future deployed URL
+                    "https://mine-comm-front.onrender.com/" // Your future deployed URL
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
