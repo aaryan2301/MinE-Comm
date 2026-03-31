@@ -10,6 +10,7 @@ import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.List;
@@ -28,11 +29,9 @@ public class ChatBotService {
     public String getBotResponse(String userQuery){
 
         try{
-            String promptStringTemplate = Files.readString(
-                    resourceLoader.getResource("classpath:prompts/chatbot-rag-prompt.st")
-                            .getFile()
-                            .toPath()
-            );
+            String promptStringTemplate = resourceLoader
+                .getResource("classpath:prompts/chatbot-rag-prompt.st")
+                .getContentAsString(StandardCharsets.UTF_8);
 
             String context = fetchSemanticContext(userQuery);
 
